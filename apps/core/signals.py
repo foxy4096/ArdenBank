@@ -16,23 +16,23 @@ def create_account(sender, instance, created, **kwargs):
 @receiver(post_save, sender=Transaction)
 def create_transaction(sender, instance, created, **kwargs):
     if created:
-        transaction_type = instance.transaction_type
+        transaction_type = instance.transaction_type.lower()
         if transaction_type == "deposit":
-            instance.receiver.user.send_mail(
+            instance.receiver.user.email_user(
                 subject="Deposit Successful",
                 message=f"You have successfully deposited ${instance.amount} to your account.",
             )
         elif transaction_type == "withdraw":
-            instance.sender.user.send_mail(
+            instance.sender.user.email_user(
                 subject="Withdraw Successful",
                 message=f"You have successfully withdrawn ${instance.amount} from your account.",
             )
         elif transaction_type == "transfer":
-            instance.sender.user.send_mail(
+            instance.sender.user.email_user(
                 subject="Transfer Successful",
                 message=f"You have successfully transferred ${instance.amount} to {instance.receiver.user.username} from your account.",
             )
-            instance.receiver.user.send_mail(
+            instance.receiver.user.email_user(
                 subject="Transfer",
                 message=f"You have successfully received ${instance.amount} from {instance.sender.user.username} to your account.",
             )

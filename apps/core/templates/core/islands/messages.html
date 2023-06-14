@@ -1,0 +1,21 @@
+{% if messages %}
+
+{% for message in messages %}
+<article class="message is-{{ message.tags }} mb-0">
+    <div class="message-body">
+        {{ message }}
+    </div>
+</article>
+{% endfor %}
+
+<br>
+{% endif %}
+{% if user.is_authenticated and not user.account.is_active %}
+<article class="message is-danger mb-0">
+    <div class="message-body">
+        Your Account is not active! Please active with the link sent on your registered email to generate an account no, or <a href="{% url 'resend_activation_email' %}">resend the activation email</a>
+    </div>
+</article>
+{% endif %}
+<br>
+    

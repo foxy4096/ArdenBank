@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load bulma_tags %}
+{% load static %}
+
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block content %}
+<div class="columns" hx-boost="flase">
+    <div class="column is-half">
+        <h1 class="title is-1 has-text-weight-bold">Sign Up</h1>
+        <p class="subtitle">Just Fill the Information Below to Get Started</p>
+        <form method="POST">
+            {{ form|bulma }}
+            {% csrf_token %}
+            <br>
+            <br>
+            <div class="buttons">
+                <button type="submit" class="button is-large">Sign Up</button>
+            </div>
+            <a href="{% url 'login' %}">Already have an account?</a>
+
+        </form>
+    </div>
+</div>
+{% endblock content %}

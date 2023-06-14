@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load bulma_tags %}
+{% load static %}
+
+
+{% block title %}
+Profile
+{% endblock title %}
+
+{% block content %}
+<div class="columns" hx-boost="flase">
+    <div class="column is-half">
+        <h1 class="title is-1 has-text-weight-bold">Your Profile</h1>
+        <form method="POST">
+            {{ pform|bulma }}
+            {% csrf_token %}
+            <br>
+            <br>
+            <div class="buttons">
+                <button type="submit" class="button is-large">Save</button>
+            </div>
+
+        </form>
+    </div>
+</div>
+{% endblock content %}

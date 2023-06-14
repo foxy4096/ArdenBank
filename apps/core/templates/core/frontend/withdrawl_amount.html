@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load bulma_tags %}
+
+{% block title %}
+Withdrawl
+{% endblock title %}
+
+
+{% block content %}
+<div class="columns">
+    <div class="column is-half">
+        <div class="box">
+            <h1 class="title is-1">Withdrawl</h1>
+            <form method="POST">
+                {{ form|bulma }}
+                {% csrf_token %}
+                <br>
+                <br>
+                <div class="buttons">
+                    <button type="submit" class="button is-large">Withdrawl</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

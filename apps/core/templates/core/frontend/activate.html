@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load bulma_tags %}
+{% load static %}
+
+
+{% block title %}
+Activation: Add Security Question
+{% endblock title %}
+
+{% block content %}
+<div class="columns" hx-boost="flase">
+    <div class="column is-half">
+        <h1 class="title is-1 has-text-weight-bold">Finishing Up</h1>
+        <p class="subtitle">Just add a security question for your account and then you are done.</p>
+        <form method="POST">
+            {{ form|bulma }}
+            {% csrf_token %}
+            <br>
+            <br>
+            <div class="buttons">
+                <button type="submit" class="button is-large">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
